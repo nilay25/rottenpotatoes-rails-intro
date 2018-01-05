@@ -13,9 +13,6 @@ class MoviesController < ApplicationController
 		if params.key?(:sort_by)
 			session[:sort_by] = params[:sort_by]
 		elsif session.key?(:sort_by)
-			#params[:sort_by] = session[:sort_by]
-			
-			#redirect_to movies_path(params) and return
 		end
 		@hilite = sort_by = session[:sort_by]
 		@all_ratings = Movie.all_ratings
@@ -23,8 +20,6 @@ class MoviesController < ApplicationController
 		if params.key?(:ratings)
 			session[:ratings] = params[:ratings]
 		elsif session.key?(:ratings)
-			#params[:ratings] = session[:ratings]
-			#redirect_to movies_path(params) and return
 			if session[:ratings].present?
 				if !(params[:sort_by].present? && params[:ratings].present?)
 					flash.keep
